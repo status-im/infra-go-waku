@@ -1,0 +1,5 @@
+---
+- import_tasks: nodekey.yml
+- import_tasks: consul.yml
+# TODO: add discovery of nodes
+- import_tasks: docker.yml

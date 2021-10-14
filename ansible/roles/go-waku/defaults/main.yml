@@ -1,0 +1,55 @@
+---
+go_waku_service_name: 'go-waku'
+go_waku_service_path: '/docker/{{ go_waku_service_name }}'
+
+go_waku_cont_name: '{{ go_waku_service_name }}-node'
+go_waku_cont_vol: '{{ go_waku_service_path }}/node'
+go_waku_cont_tag: latest
+go_waku_cont_image: 'statusteam/go-waku:{{ go_waku_cont_tag }}'
+
+# Value for private node key which is used to create public enode key
+go_waku_node_key: ~
+go_waku_node_key_file_path: '{{ go_waku_cont_vol }}/nodekey'
+go_waku_node_pubkey_file_path: '{{ go_waku_cont_vol }}/publickey'
+
+# Available: DEBUG, INFO, WARN, ERROR, DPANIC, PANIC, FATAL
+go_waku_log_level: 'INFO'
+
+# Nodes
+go_waku_static_nodes: []
+
+# Protocols
+go_waku_relay_enabled: true
+go_waku_store_enabled: false
+go_waku_store_nodes: []
+go_waku_filter_enabled: false
+go_waku_filter_nodes: []
+go_waku_lightpush_enabled: false
+go_waku_lightpush_nodes: []
+# esperimental discovery support
+go_waku_rendezvous_enabled: false
+go_waku_rendezvous_nodes: []
+
+go_waku_libp2p_port: 9000
+go_waku_metrics_enabled: true
+go_waku_metrics_port: 8008
+go_waku_websocket_enabled: false
+go_waku_websocket_port: 9001
+
+# resource limits, mem in MB
+go_waku_cpu_limit: 0.60
+go_waku_mem_limit: '{{ (ansible_memtotal_mb * 0.6) | int }}'
+go_waku_cpu_reserve: 0.20
+go_waku_mem_reserve: '{{ (ansible_memtotal_mb * 0.2) | int }}'
+
+# container restart policy
+go_waku_restart_condition: 'any'
+go_waku_restart_window_sec: 120
+
+# For querying for fleet peers
+consul_url: 'http://localhost:8500/v1/catalog'
+
+# general container management
+compose_recreate: 'smart'
+compose_state: 'present'
+compose_restart: false

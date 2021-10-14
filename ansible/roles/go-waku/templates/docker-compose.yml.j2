@@ -1,0 +1,68 @@
+---
+version: '3.7'
+services:
+  node:
+    container_name: '{{ go_waku_cont_name }}'
+    image: '{{ go_waku_cont_image }}'
+    labels:
+      # auto-updating of docker image
+      com.centurylinklabs.watchtower.enable: 'true'
+    deploy:
+      resources:
+        limits:
+          cpus: '{{ go_waku_cpu_limit | float }}'
+          memory: '{{ go_waku_mem_limit }}M'
+        reservations:
+          memory: '{{ go_waku_mem_reserve }}M'
+      restart_policy:
+        condition: '{{ go_waku_restart_condition }}'
+    volumes:
+      - '{{ go_waku_cont_vol }}/data:/data'
+    ports:
+      - '{{ go_waku_libp2p_port }}:{{ go_waku_libp2p_port }}/tcp'
+      - '{{ go_waku_metrics_port }}:{{ go_waku_metrics_port }}/tcp'
+      - '{{ go_waku_websocket_port }}:{{ go_waku_websocket_port }}/tcp'
+    command: |
+      --nodekey={{ go_waku_node_key | mandatory }}
+      --log-level={{ go_waku_log_level }}
+      --port={{ go_waku_libp2p_port }}
+      --dbpath=/data
+{% if not go_waku_relay_enabled %}
+      --no-relay
+{% endif %}
+{% if go_waku_store_enabled %}
+      --store=true
+{% for node in go_waku_store_nodes %}
+      --store-node=
+{% endfor %}
+{% endif %}
+{% if go_waku_filter_enabled %}
+      --filter=true
+{% for node in go_waku_filter_nodes %}
+      --filter-node=
+{% endfor %}
+{% endif %}
+{% if go_waku_lightpush_enabled %}
+      --lightpush=true
+{% for node in go_waku_lightpush_nodes %}
+      --lightpush-node={{ node }}
+{% endfor %}
+{% endif %}
+{% if go_waku_rendezvous_enabled %}
+      --rendezvous
+{% for node in go_waku_lightpush_nodes %}
+      --lightpush-node={{ node }}
+{% endfor %}
+{% endif %}
+{% if go_waku_metrics_enabled %}
+      --metrics
+      --metrics-port={{ go_waku_metrics_port }}
+      --metrics-address=0.0.0.0
+{% endif %}
+{% if go_waku_websocket_enabled %}
+      --ws
+      --ws-port={{ go_waku_metrics_port }}
+{% endif %}
+{% for node in go_waku_static_nodes %}
+      --static-node={{ node }}
+{% endfor %}

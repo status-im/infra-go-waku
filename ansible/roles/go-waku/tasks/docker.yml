@@ -1,0 +1,29 @@
+---
+- name: 'Create data folder'
+  file:
+    dest: '{{ item }}'
+    state: 'directory'
+    owner: dockremap
+    group: docker
+    mode: 0775
+  with_items:
+    - '{{ go_waku_service_path }}'
+    - '{{ go_waku_cont_vol }}/data'
+
+- name: 'Create compose file: {{ go_waku_cont_name }}'
+  template:
+    src: 'docker-compose.yml.j2'
+    dest: '{{ go_waku_service_path }}/docker-compose.yml'
+    owner: dockremap
+    group: docker
+    mode: 0644
+
+- name: 'Create container: {{ go_waku_cont_name }}'
+  docker_compose:
+    project_src: '{{ go_waku_service_path }}'
+    pull: true
+    state: '{{ compose_state }}'
+    restarted: '{{ compose_restart }}'
+    recreate: '{{ compose_recreate }}'
+    # Avoid deprecation warning
+    tls_hostname: 'localhost'

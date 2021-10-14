@@ -1,0 +1,27 @@
+---
+- name: Define Consul services
+  include_role: name=consul-service
+  vars:
+    consul_config_name: '{{ go_waku_service_name | replace("-", "_") }}'
+    consul_services:
+      - id: '{{ go_waku_service_name }}'
+        name: '{{ go_waku_service_name }}'
+        port: '{{ go_waku_libp2p_port }}'
+        address: '{{ ansible_host }}'
+        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku']
+        checks:
+          - name: '{{ go_waku_service_name }}-health'
+            type: 'tcp'
+            tcp: 'localhost:{{ go_waku_libp2p_port }}'
+
+      - id: '{{ go_waku_service_name }}-metrics'
+        name: '{{ go_waku_service_name }}-metrics'
+        port: '{{ go_waku_metrics_port }}'
+        address: '{{ ansible_local.wireguard.address }}'
+        tags: ['{{ env }}.{{ stage }}', 'nim', 'waku', 'metrics']
+        meta:
+          container: '{{ go_waku_service_name }}'
+        checks:
+          - name: '{{ go_waku_service_name }}-metrics-health'
+            type: 'http'
+            http: 'http://localhost:{{ go_waku_metrics_port }}/health'
