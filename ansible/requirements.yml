@@ -1,0 +1,25 @@
+---
+- name: open-ports
+  src: git@github.com:status-im/infra-role-open-ports.git
+  version: 24dc30dbdf85e6758cb6924074b2f7a0f4541524
+  scm: git
+
+- name: swap-file
+  src: git@github.com:status-im/infra-role-swap-file.git
+  version: 7b63fb7b5f0c525aa191e1a410fd79f7eab8d11a
+  scm: git
+
+- name: infra-role-bootstrap-linux
+  src: git@github.com:status-im/infra-role-bootstrap-linux.git
+  version: 65560f2451fb7e5586f114f20719bd8b1a086508
+  scm: git
+
+- name: infra-role-wireguard
+  src: git@github.com:status-im/infra-role-wireguard.git
+  version: c0c96298270c1763e819967ff1cad4ad876506b0
+  scm: git
+
+- name: consul-service
+  src: git@github.com:status-im/infra-role-consul-service.git
+  version: 241dffb0f865f8558b5e373d20fefed0a08a21ef
+  scm: git
