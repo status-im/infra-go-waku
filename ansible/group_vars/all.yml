@@ -4,6 +4,9 @@ bootstrap__root_pass: '{{lookup("bitwarden", "root-pass")}}'
 # Consul encryption key
 bootstrap__consul_encryption_key: '{{lookup("bitwarden", "consul", field="encryption-key")}}'
 
+# SWAP
+swap_file_size_mb: 1024
+
 # general container config
 cont_state: started
 cont_recreate: false
