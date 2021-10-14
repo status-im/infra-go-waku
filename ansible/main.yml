@@ -11,6 +11,8 @@
 
 - name: Configure Waku Nodes
   hosts:
-    - go-waku-test
+    - go-waku
   roles:
     - { role: swap-file,  tags: swap-file }
+    - { role: open-ports, tags: open-ports }
+    - { role: go-waku,    tags: go-waku }
