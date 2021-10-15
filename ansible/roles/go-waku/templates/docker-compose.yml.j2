@@ -16,6 +16,8 @@ services:
           memory: '{{ go_waku_mem_reserve }}M'
       restart_policy:
         condition: '{{ go_waku_restart_condition }}'
+    environment:
+      GOLOG_LOG_FMT: '{{ go_waku_log_format }}'
     volumes:
       - '{{ go_waku_cont_vol }}/data:/data'
     ports:
