@@ -12,10 +12,22 @@
   with_items: '{{ data_centers.json }}'
   register: go_waku_services
 
+- name: Discover nim-waku fleet peers
+  uri:
+    url: '{{ consul_url }}/service/nim-waku-v2?dc={{ item }}&tag=stage:{{ stage }}'
+  run_once: true
+  with_items: '{{ data_centers.json }}'
+  register: nim_waku_services
+
 - name: Combine data centers into one list
   set_fact:
     go_waku_peers: '{{ go_waku_services.results | sum(attribute="json", start=[]) }}'
+    nim_waku_peers: '{{ nim_waku_services.results | sum(attribute="json", start=[]) }}'
 
 - name: Extract fleet stages from services
   set_fact:
-    go_waku_static_nodes: '{{ go_waku_peers | map(attribute="ServiceMeta.node_enode") | list }}'
+    go_waku_static_nodes: |
+      {{ (go_waku_peers + nim_waku_peers)
+      | map(attribute="ServiceMeta.node_enode")
+      | list }}
+- debug: var=go_waku_static_nodes
