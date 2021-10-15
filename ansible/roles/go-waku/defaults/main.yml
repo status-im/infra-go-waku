@@ -10,7 +10,7 @@ go_waku_cont_image: 'statusteam/go-waku:{{ go_waku_cont_tag }}'
 # Value for private node key which is used to create public enode key
 go_waku_node_key: ~
 go_waku_node_key_file_path: '{{ go_waku_cont_vol }}/nodekey'
-go_waku_node_pubkey_file_path: '{{ go_waku_cont_vol }}/publickey'
+go_waku_node_multiaddr_path: '{{ go_waku_cont_vol }}/multiaddr'
 
 # Available: DEBUG, INFO, WARN, ERROR, DPANIC, PANIC, FATAL
 go_waku_log_level: 'INFO'

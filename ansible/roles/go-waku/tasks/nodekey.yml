@@ -33,3 +33,34 @@
 - name: Extract node key
   set_fact:
     go_waku_node_key: '{{ nodekey_slurp.content | b64decode | trim }}'
+
+- name: Check if public key exists
+  stat:
+    path: '{{ go_waku_node_multiaddr_path }}'
+  register: pubkey_file
+
+- name: Generate public key
+  docker_container:
+    name: '{{ go_waku_service_name }}-genkey'
+    image: '{{ go_waku_cont_image }}'
+    user: root
+    auto_remove: true
+    # Avoid deprecation warning
+    container_default_behavior: 'compatibility'
+    entrypoint: '/bin/sh'
+    command: |
+      -c '/usr/bin/waku --show-addresses \
+            --advertise-address={{ go_waku_public_address }} \
+            --nodekey={{ go_waku_node_key }} > /node/multiaddr'
+    volumes:
+      - '{{ go_waku_cont_vol }}:/node:rw'
+  when: pubkey_file.stat.exists == False
+
+- name: Read public key to from a file
+  slurp:
+    src: '{{ go_waku_node_multiaddr_path }}'
+  register: pubkey_slurp
+
+- name: Extract node key
+  set_fact:
+    go_waku_node_multiaddr: '{{ pubkey_slurp.content | b64decode | trim }}'

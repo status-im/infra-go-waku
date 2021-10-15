@@ -9,6 +9,8 @@
         port: '{{ go_waku_libp2p_port }}'
         address: '{{ ansible_host }}'
         tags: ['{{ env }}.{{ stage }}', 'nim', 'waku']
+        meta:
+          node_enode: '{{ go_waku_node_multiaddr }}'
         checks:
           - name: '{{ go_waku_service_name }}-health'
             type: 'tcp'
