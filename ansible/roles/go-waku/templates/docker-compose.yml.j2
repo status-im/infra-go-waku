@@ -30,7 +30,7 @@ services:
       --port={{ go_waku_libp2p_port }}
       --advertise-address={{ go_waku_public_address }}
       --use-db
-      --dbpath=/data
+      --dbpath=/data/store.db
 {% if not go_waku_relay_enabled %}
       --no-relay
 {% endif %}
