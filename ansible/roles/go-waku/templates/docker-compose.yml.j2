@@ -28,6 +28,7 @@ services:
       --nodekey={{ go_waku_node_key | mandatory }}
       --log-level={{ go_waku_log_level }}
       --port={{ go_waku_libp2p_port }}
+      --advertise-address={{ go_waku_public_address }}
       --dbpath=/data
 {% if not go_waku_relay_enabled %}
       --no-relay

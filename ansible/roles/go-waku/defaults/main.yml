@@ -16,7 +16,8 @@ go_waku_node_multiaddr_path: '{{ go_waku_cont_vol }}/multiaddr'
 go_waku_log_level: 'INFO'
 # Available: color, nocolor, json
 go_waku_log_format: 'json'
-
+# Advertised address
+go_waku_public_address: '{{ ansible_host }}'
 # Nodes
 go_waku_static_nodes: []
 
