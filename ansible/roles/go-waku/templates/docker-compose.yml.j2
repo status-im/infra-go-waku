@@ -58,6 +58,10 @@ services:
       --lightpush-node={{ node }}
 {% endfor %}
 {% endif %}
+{% if go_waku_rendezvous_server_enabled %}
+      --rendezvous-server
+      --rendezvous-db-path=/data/rendezvous
+{% endif %}
 {% if go_waku_metrics_enabled %}
       --metrics
       --metrics-port={{ go_waku_metrics_port }}

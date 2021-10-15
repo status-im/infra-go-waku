@@ -2,6 +2,8 @@
 # Go-Waku
 go_waku_libp2p_port: 30303
 go_waku_metrics_port: 8008
+# Protocols
+go_waku_rendezvous_server_enabled: true
 
 # Firewall
 open_ports_default_comment: '{{ go_waku_service_name }}'
