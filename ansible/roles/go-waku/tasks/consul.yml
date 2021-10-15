@@ -8,7 +8,7 @@
         name: '{{ go_waku_service_name }}'
         port: '{{ go_waku_libp2p_port }}'
         address: '{{ ansible_host }}'
-        tags: ['env:{{ env }}', 'stage:{{ stage }}', 'nim', 'waku']
+        tags: ['nim', 'waku']
         meta:
           node_enode: '{{ go_waku_node_multiaddr }}'
         checks:
@@ -20,7 +20,7 @@
         name: '{{ go_waku_service_name }}-metrics'
         port: '{{ go_waku_metrics_port }}'
         address: '{{ ansible_local.wireguard.address }}'
-        tags: ['env:{{ env }}', 'stage:{{ stage }}', 'nim', 'waku', 'metrics']
+        tags: ['nim', 'waku', 'metrics']
         meta:
           container: '{{ go_waku_service_name }}'
         checks:
