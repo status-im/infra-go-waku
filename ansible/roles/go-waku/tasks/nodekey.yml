@@ -50,6 +50,7 @@
     entrypoint: '/bin/sh'
     command: |
       -c '/usr/bin/waku --show-addresses \
+            --port={{ go_waku_libp2p_port }} \
             --advertise-address={{ go_waku_public_address }} \
             --nodekey={{ go_waku_node_key }} > /node/multiaddr'
     volumes:
