@@ -5,6 +5,8 @@ certbot_certs:
   - domains: [ '{{ dns_entry }}' ]
 
 # Go-Waku
+go_waku_cont_tag: 'deploy-{{ stage }}'
+# Ports
 go_waku_libp2p_port: 30303
 go_waku_metrics_port: 8008
 go_waku_websocket_port: 9001
