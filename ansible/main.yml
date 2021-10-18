@@ -15,4 +15,5 @@
   roles:
     - { role: swap-file,  tags: swap-file }
     - { role: open-ports, tags: open-ports }
+    - { role: certbot,    tags: certbot }
     - { role: go-waku,    tags: go-waku }

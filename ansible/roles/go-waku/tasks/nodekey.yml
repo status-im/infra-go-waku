@@ -65,3 +65,4 @@
 - name: Extract node key
   set_fact:
     go_waku_node_multiaddr: '{{ pubkey_slurp.content | b64decode | trim }}'
+    go_waku_node_peer_id: '{{ pubkey_slurp.content | b64decode | trim | split("/") | last }}'

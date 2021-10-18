@@ -1,8 +1,6 @@
 ---
-- name: Define Consul services
-  include_role: name=consul-service
-  vars:
-    consul_config_name: '{{ go_waku_service_name | replace("-", "_") }}'
+- name: Prepare Consul services
+  set_fact:
     consul_services:
       - id: '{{ go_waku_service_name }}'
         name: '{{ go_waku_service_name }}'
@@ -16,6 +14,18 @@
             type: 'tcp'
             tcp: 'localhost:{{ go_waku_libp2p_port }}'
 
+      - id: '{{ go_waku_service_name }}-websocket'
+        name: '{{ go_waku_service_name }}-websocket'
+        port: '{{ go_waku_websocket_port }}'
+        address: '{{ ansible_local.wireguard.address }}'
+        tags: ['nim', 'waku', 'websocket']
+        meta:
+          node_enode: '/dns4/{{ go_waku_websocket_ssl_domain | mandatory }}/tcp/443/wss/p2p/{{ go_waku_node_peer_id }}'
+        checks:
+          - name: '{{ go_waku_service_name }}-websocket-health'
+            type: 'tcp'
+            tcp: 'localhost:{{ go_waku_websocket_port }}'
+
       - id: '{{ go_waku_service_name }}-metrics'
         name: '{{ go_waku_service_name }}-metrics'
         port: '{{ go_waku_metrics_port }}'
@@ -27,3 +37,14 @@
           - name: '{{ go_waku_service_name }}-metrics-health'
             type: 'http'
             http: 'http://localhost:{{ go_waku_metrics_port }}/health'
+
+- name: Disable websocket service
+  set_fact:
+    consul_services: |
+      {{ consul_services | rejectattr('name', 'match', '.*-websocket') | list }}
+  when: not go_waku_websocket_enabled
+
+- name: Create Consul services
+  include_role: name=consul-service
+  vars:
+    consul_config_name: '{{ go_waku_service_name | replace("-", "_") }}'

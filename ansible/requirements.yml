@@ -23,3 +23,8 @@
   src: git@github.com:status-im/infra-role-consul-service.git
   version: 241dffb0f865f8558b5e373d20fefed0a08a21ef
   scm: git
+
+- name: certbot
+  src: git@github.com:status-im/infra-role-certbot.git
+  version: ba9d44e145f0aff75147eb26e7724e70ed35dcfd
+  scm: git

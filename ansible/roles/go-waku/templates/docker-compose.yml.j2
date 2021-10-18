@@ -69,7 +69,7 @@ services:
 {% endif %}
 {% if go_waku_websocket_enabled %}
       --ws
-      --ws-port={{ go_waku_metrics_port }}
+      --ws-port={{ go_waku_websocket_port }}
 {% endif %}
 {% for node in go_waku_static_nodes %}
       --static-node={{ node }}
