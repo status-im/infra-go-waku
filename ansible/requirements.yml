@@ -26,5 +26,5 @@
 
 - name: certbot
   src: git@github.com:status-im/infra-role-certbot.git
-  version: ba9d44e145f0aff75147eb26e7724e70ed35dcfd
+  version: 4b93ca81043f843d573c43b42f50e7620e81590d
   scm: git
