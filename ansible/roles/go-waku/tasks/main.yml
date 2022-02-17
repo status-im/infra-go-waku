@@ -1,7 +1,0 @@
----
-- import_tasks: nodekey.yml
-- import_tasks: consul.yml
-- import_tasks: discover.yml
-- import_tasks: docker.yml
-- import_tasks: proxy.yml
-  when: go_waku_websocket_ssl_proxy_enabled
