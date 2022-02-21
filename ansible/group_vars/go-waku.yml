@@ -1,6 +1,8 @@
 ---
 # LetsEncrypt via Certbot
 certbot_admin_email: 'devops@status.im'
+certbot_docker_enabled: true
+certbot_containers_to_stop: ['go-waku-node']
 certbot_certs:
   - domains: [ '{{ dns_entry }}' ]
 
