@@ -13,7 +13,8 @@
   hosts:
     - go-waku
   roles:
-    - { role: swap-file,  tags: swap-file }
+    - { role: swap-file,  tags: swap-file  }
     - { role: open-ports, tags: open-ports }
-    - { role: certbot,    tags: certbot }
-    - { role: go-waku,    tags: go-waku }
+    - { role: certbot,    tags: certbot    }
+    - { role: go-waku,    tags: go-waku    }
+    - { role: waku-peers, tags: waku-peers }
