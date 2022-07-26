@@ -31,10 +31,10 @@
 
 - name: go-waku
   src: git@github.com:status-im/infra-role-go-waku.git
-  version: 7520e276313868fd9fe9ca274cb8cb4951be75b2
+  version: 5266d62ecdde27f89b86901752b9f075c6447ac3
   scm: git
 
 - name: waku-peers
   src: git@github.com:status-im/infra-role-waku-peers.git
-  version: f8d48cfa21f1597c7e165e79d782fa603ceedd3f
+  version: be28c829684db5468c0b98e69bc2284ab72999a5
   scm: git
