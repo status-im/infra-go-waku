@@ -9,6 +9,10 @@ bootstrap__sshguard_whitelist_extra: ['{{lookup("bitwarden", "sshguard/whitelist
 # Wireguard
 wireguard_consul_acl_token: '{{lookup("bitwarden", "consul/acl-tokens", field="wireguard")}}'
 
+# Custom SSH accounts for Nimbus fleet, should start from UID 8000.
+bootstrap__active_extra_users:
+  - { name: 'richard', uid: 8000, admin: true, key: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGr8HR9PPhzrZTSjtPHtF4AfeYPmEZY1FA3OJ4VPgBjd richard@status.im' }
+
 # SWAP
 swap_file_size_mb: 1024
 
