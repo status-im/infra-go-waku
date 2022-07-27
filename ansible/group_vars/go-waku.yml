@@ -14,13 +14,12 @@ go_waku_cont_tag: 'deploy-{{ stage }}'
 go_waku_rpc_port: 8545
 go_waku_libp2p_port: 30303
 go_waku_metrics_port: 8008
-go_waku_websocket_port: 9001
-# Protocols
-go_waku_websocket_enabled: true
 go_waku_rendezvous_server_enabled: true
-# SSL proxy
-go_waku_websocket_ssl_proxy_enabled: true
-go_waku_websocket_ssl_domain: '{{ dns_entry }}'
+# Secure Websocket
+go_waku_websocket_enabled: true
+go_waku_websocket_secure_enabled: true
+go_waku_websocket_port: 443
+go_waku_websocket_ssl_dir: '/etc/letsencrypt'
 go_waku_websocket_ssl_cert: '/etc/letsencrypt/live/{{ dns_entry }}/fullchain.pem'
 go_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ dns_entry }}/privkey.pem'
 
@@ -36,7 +35,6 @@ waku_peers_consul_services:
 open_ports_default_comment: '{{ go_waku_service_name }}'
 open_ports_default_chain: 'SERVICES'
 open_ports_list:
-  - { port: 80, comment: '{{ go_waku_service_name }} Websocket Proxy' }
-  - { port: 443, comment: '{{ go_waku_service_name }} Websocket Proxy' }
+  - { port: 443 }
   - { port: '{{ go_waku_libp2p_port }}' }
   - { port: '{{ go_waku_metrics_port }}', chain: 'VPN', ipset: 'metrics.hq' }
