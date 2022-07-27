@@ -19,7 +19,7 @@ go_waku_store_enabled: true
 go_waku_relay_enabled: true
 go_waku_filter_enabled: true
 # Secure Websocket
-go_waku_websocket_enabled: true
+go_waku_websocket_enabled: false # FIXME: WSS has no separate flag for port.
 go_waku_websocket_secure_enabled: true
 go_waku_websocket_port: 443
 go_waku_websocket_ssl_dir: '/etc/letsencrypt'
