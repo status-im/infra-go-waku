@@ -3,6 +3,7 @@
 certbot_admin_email: 'devops@status.im'
 certbot_docker_enabled: true
 certbot_containers_to_stop: ['{{ go_waku_cont_name }}']
+certbot_services_to_stop: []
 certbot_certs:
   - domains: [ '{{ dns_entry }}' ]
 
