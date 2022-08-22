@@ -11,7 +11,7 @@
 
 - name: infra-role-bootstrap-linux
   src: git@github.com:status-im/infra-role-bootstrap-linux.git
-  version: 356394892900dd5ca26c41e5315c31cb2d8786bf
+  version: 2b98037fbdf7bfaeb914e6a3f16132f8b319f875
   scm: git
 
 - name: infra-role-wireguard
@@ -21,22 +21,22 @@
 
 - name: consul-service
   src: git@github.com:status-im/infra-role-consul-service.git
-  version: 0cddfb4dd696e759a0a95c4753e7b95aeedc4242
+  version: 7653d06cfc4d2613ee14bf637d38d98b0201864f
   scm: git
 
 - name: systemd-timer
   src: git@github.com:status-im/infra-role-systemd-timer.git
-  version: 4009905f62f6bd9e02ceb94346dd06ab2a06fc15
+  version: 0cc94695f3dada39213a87fbe923cd90e2a7d2c2
   scm: git
 
 - name: certbot
   src: git@github.com:status-im/infra-role-certbot.git
-  version: e032a64f8838ef618baed71a9fb20cff98ae3d52
+  version: a0f3dc76f2f07ed6857312da1f559db52f9781a1
   scm: git
 
 - name: go-waku
   src: git@github.com:status-im/infra-role-go-waku.git
-  version: 47b70377c7baef0394ddbd4aab0162c8e70afcba
+  version: 333fd92d0d2046440fe34cfd50901eecb092bccd
   scm: git
 
 - name: waku-peers
