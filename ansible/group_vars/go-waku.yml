@@ -44,6 +44,7 @@ waku_peers_consul_services:
 open_ports_default_comment: '{{ go_waku_service_name }}'
 open_ports_default_chain: 'SERVICES'
 open_ports_list:
-  - { port: 443 }
+  - { port: 80, comment: 'Certbot' }
+  - { port: '{{ go_waku_websocket_port }}' }
   - { port: '{{ go_waku_libp2p_port }}' }
   - { port: '{{ go_waku_metrics_port }}', chain: 'VPN', ipset: 'metrics.hq' }
