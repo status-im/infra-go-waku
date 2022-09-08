@@ -21,4 +21,7 @@ module "hosts" {
     "443",   /* https */
     "30303", /* p2p main */
   ]
+  open_udp_ports = [
+    "9000",  /* discovery v5 */
+  ]
 }

@@ -15,6 +15,7 @@ go_waku_cont_tag: 'deploy-{{ stage }}'
 go_waku_rpc_port: 8545
 go_waku_libp2p_port: 30303
 go_waku_metrics_port: 8008
+go_waku_disc_v5_port: 9000
 # Protocols
 go_waku_store_enabled: true
 go_waku_relay_enabled: true
@@ -41,6 +42,13 @@ waku_peers_consul_services:
   - { name: 'nim-waku-v2', env: 'wakuv2',  stage: '{{ stage }}' }
   - { name: 'go-waku',     env: 'go-waku', stage: '{{ stage }}' }
 
+# DiscV5
+go_waku_disc_v5_enabled: true
+
+# DNSDiscovery
+go_waku_dns_disc_enabled: false
+#go_waku_dns_disc_url: 'enrtree://'
+
 # Firewall
 open_ports_default_comment: '{{ go_waku_service_name }}'
 open_ports_default_chain: 'SERVICES'
@@ -49,3 +57,4 @@ open_ports_list:
   - { port: '{{ go_waku_websocket_secure_port }}' }
   - { port: '{{ go_waku_libp2p_port }}' }
   - { port: '{{ go_waku_metrics_port }}', chain: 'VPN', ipset: 'metrics.hq' }
+  - { port: '{{ go_waku_disc_v5_port }}', protocol: 'udp' }
