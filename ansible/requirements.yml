@@ -16,7 +16,7 @@
 
 - name: infra-role-wireguard
   src: git@github.com:status-im/infra-role-wireguard.git
-  version: 9d8c93bc44ec123b81b9912f10e377e9b953ea5a
+  version: 544b1f0435d5ca47168236c42b6a077c44d5eb4a
   scm: git
 
 - name: consul-service
@@ -36,7 +36,7 @@
 
 - name: go-waku
   src: git@github.com:status-im/infra-role-go-waku.git
-  version: 05a4480f05c2a203a86beaa78b3eda170676da58
+  version: f9dc43975e7988d33c499cddb16c088e9be14897
   scm: git
 
 - name: waku-peers
