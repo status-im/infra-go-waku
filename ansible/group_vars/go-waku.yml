@@ -39,7 +39,6 @@ waku_peers_rpc_port: '{{ go_waku_rpc_port }}'
 waku_peers_rpc_timeout: 20
 waku_peers_rpc_retries: 5
 waku_peers_consul_services:
-  - { name: 'nim-waku-v2', env: 'wakuv2',  stage: '{{ stage }}' }
   - { name: 'go-waku',     env: 'go-waku', stage: '{{ stage }}' }
 
 # DiscV5
