@@ -11,6 +11,11 @@ certbot_certs:
 go_waku_service_name: 'go-waku'
 go_waku_cont_name: '{{ go_waku_service_name }}'
 go_waku_cont_tag: 'deploy-{{ stage }}'
+# DiscV5
+go_waku_disc_v5_enabled: true
+# DNSDiscovery
+go_waku_dns_disc_enabled: true
+go_waku_dns_disc_url: 'enrtree://AOGECG2SPND25EEFMAJ5WF3KSGJNSGV356DSTL2YVLLZWIV6SAYBM@{{ stage }}.nodes.status.im'
 # Ports
 go_waku_rpc_port: 8545
 go_waku_libp2p_port: 30303
@@ -41,13 +46,6 @@ waku_peers_rpc_retries: 5
 waku_peers_consul_services:
   - { name: 'nim-waku',    env: 'status',  stage: '{{ stage }}' }
   - { name: 'go-waku',     env: 'go-waku', stage: '{{ stage }}' }
-
-# DiscV5
-go_waku_disc_v5_enabled: true
-
-# DNSDiscovery
-go_waku_dns_disc_enabled: false
-#go_waku_dns_disc_url: 'enrtree://'
 
 # Firewall
 open_ports_default_comment: '{{ go_waku_service_name }}'
