@@ -11,9 +11,14 @@ module "hosts" {
   host_count = local.ws["hosts_count"]
 
   /* instance types */
-  do_type = local.ws["do_type"] /* DigitalOcean */
   ac_type = local.ws["ac_type"] /* Alibaba Cloud */
+  do_type = local.ws["do_type"] /* DigitalOcean */
   gc_type = local.ws["gc_type"] /* Google Cloud */
+
+  /* data volumes */
+  ac_data_vol_size = 20
+  do_data_vol_size = 20
+  gc_data_vol_size = 20
 
   /* firewall */
   open_tcp_ports = [
