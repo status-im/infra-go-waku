@@ -11,17 +11,17 @@
 
 - name: infra-role-bootstrap-linux
   src: git@github.com:status-im/infra-role-bootstrap-linux.git
-  version: c8b383c75f424372a87c15179f873b764a0324a1
+  version: c9ba56896f75e4669d2f949d04726bc8fe82a534
   scm: git
 
 - name: infra-role-wireguard
   src: git@github.com:status-im/infra-role-wireguard.git
-  version: cd61becfa410bebc261c76d900e9036db5e0d41c
+  version: 6c83e0bdcecba772e5c652c89e1995865d14c662
   scm: git
 
 - name: consul-service
   src: git@github.com:status-im/infra-role-consul-service.git
-  version: 7653d06cfc4d2613ee14bf637d38d98b0201864f
+  version: 4849a3c9d7f2045669880e4e17eeb71980b2e4d0
   scm: git
 
 - name: systemd-timer
