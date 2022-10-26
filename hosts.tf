@@ -16,9 +16,9 @@ module "hosts" {
   gc_type = local.ws["gc_type"] /* Google Cloud */
 
   /* data volumes */
-  ac_data_vol_size = 20
-  do_data_vol_size = 20
-  gc_data_vol_size = 20
+  ac_data_vol_size = 40
+  do_data_vol_size = 40
+  gc_data_vol_size = 40
 
   /* firewall */
   open_tcp_ports = [
