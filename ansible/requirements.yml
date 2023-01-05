@@ -36,7 +36,7 @@
 
 - name: go-waku
   src: git@github.com:status-im/infra-role-go-waku.git
-  version: 640b84d14f5375350f3caea06e364300a99e93d8
+  version: bb570dde8c2b47e93efb42ff3228d5f41363fa4a
   scm: git
 
 - name: waku-peers
