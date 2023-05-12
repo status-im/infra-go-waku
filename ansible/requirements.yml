@@ -26,12 +26,12 @@
 
 - name: certbot
   src: git@github.com:status-im/infra-role-certbot.git
-  version: cf44a33b3e446073d0112bb43f192f828d89ab34
+  version: aa7daf1fe135375bb4295742e3c1566ee4aeffba
   scm: git
 
 - name: go-waku
   src: git@github.com:status-im/infra-role-go-waku.git
-  version: bb570dde8c2b47e93efb42ff3228d5f41363fa4a
+  version: 505bf504904a5fdbb9fcb65053417f6a2ffcaf9d
   scm: git
 
 - name: waku-peers
