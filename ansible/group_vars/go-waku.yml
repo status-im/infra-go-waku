@@ -39,6 +39,10 @@ go_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ dns_entry }}/privkey.pem'
 go_waku_store_duration: '720h' # 30 days
 go_waku_store_capacity: '{{ 0 if stage == "prod" else 1000000 }}' # 0 is unlimited
 
+# Resource Scaling
+go_waku_resource_scaling_memory_percentage: 50
+go_waku_resource_scaling_fd_percentage: 50
+
 # Peer connecting
 waku_peers_rpc_port: '{{ go_waku_rpc_port }}'
 waku_peers_rpc_timeout: 20
