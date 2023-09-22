@@ -43,14 +43,6 @@ go_waku_store_capacity: '{{ 0 if stage == "prod" else 1000000 }}' # 0 is unlimit
 go_waku_resource_scaling_memory_percentage: 50
 go_waku_resource_scaling_fd_percentage: 50
 
-# Peer connecting
-waku_peers_rpc_port: '{{ go_waku_rpc_port }}'
-waku_peers_rpc_timeout: 20
-waku_peers_rpc_retries: 5
-waku_peers_consul_services:
-  - { name: 'nim-waku',    env: 'status',  stage: '{{ stage }}' }
-  - { name: 'go-waku',     env: 'go-waku', stage: '{{ stage }}' }
-
 # Firewall
 open_ports_default_comment: '{{ go_waku_service_name }}'
 open_ports_default_chain: 'SERVICES'
