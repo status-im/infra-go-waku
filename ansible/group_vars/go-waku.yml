@@ -36,7 +36,7 @@ go_waku_websocket_ssl_cert: '/etc/letsencrypt/live/{{ dns_entry }}/fullchain.pem
 go_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ dns_entry }}/privkey.pem'
 
 # SQLite store
-go_waku_store_duration: '720h' # 30 days
+go_waku_store_duration: '168h' # 7 days
 go_waku_store_capacity: '{{ 0 if stage == "prod" else 1000000 }}' # 0 is unlimited
 
 # Resource Scaling
