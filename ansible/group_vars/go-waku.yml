@@ -15,7 +15,11 @@ go_waku_cont_tag: 'deploy-{{ stage }}'
 go_waku_disc_v5_enabled: true
 # DNSDiscovery
 go_waku_dns_disc_enabled: true
-go_waku_dns_disc_url: 'enrtree://AOGECG2SPND25EEFMAJ5WF3KSGJNSGV356DSTL2YVLLZWIV6SAYBM@{{ stage }}.nodes.status.im'
+go_waku_dns_disc_url_map:
+  test: 'enrtree://AIO6LUM3IVWCU2KCPBBI6FEH2W42IGK3ASCZHZGG5TIXUR56OGQUO@test.status.nodes.status.im'
+  prod: 'enrtree://AL65EKLJAUXKKPG43HVTML5EFFWEZ7L4LOKTLZCLJASG4DSESQZEC@prod.status.nodes.status.im'
+go_waku_dns_disc_url: '{{ go_waku_dns_disc_url_map[stage] }}'
+
 # Ports
 go_waku_rpc_port: 8545
 go_waku_libp2p_port: 30303
