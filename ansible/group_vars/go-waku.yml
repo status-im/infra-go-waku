@@ -26,7 +26,7 @@ go_waku_libp2p_port: 30303
 go_waku_metrics_port: 8008
 go_waku_disc_v5_port: 9000
 # Protocols
-go_waku_store_enabled: true
+go_waku_store_enabled: false
 go_waku_relay_enabled: true
 go_waku_filter_enabled: true
 go_waku_lightpush_enabled: true
@@ -38,11 +38,6 @@ go_waku_websocket_secure_port: 443
 go_waku_websocket_ssl_dir: '/etc/letsencrypt'
 go_waku_websocket_ssl_cert: '/etc/letsencrypt/live/{{ dns_entry }}/fullchain.pem'
 go_waku_websocket_ssl_key: '/etc/letsencrypt/live/{{ dns_entry }}/privkey.pem'
-
-# SQLite store
-go_waku_store_duration: '{{ "72h" if stage == "prod" else "168h" }}'
-go_waku_store_capacity: '{{ 0 if stage == "prod" else 1000000 }}' # 0 is unlimited
-go_waku_store_vacuum: true
 
 # Resource Scaling
 go_waku_resource_scaling_memory_percentage: 50
