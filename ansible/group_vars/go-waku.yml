@@ -13,10 +13,6 @@ go_waku_cont_name: '{{ go_waku_service_name }}'
 go_waku_cont_tag: 'deploy-{{ stage }}'
 # DiscV5
 go_waku_disc_v5_enabled: true
-# Topics
-go_waku_extra_flags:
-  - '--bridge-topics=/waku/2/default-waku/proto:/waku/2/rs/16/32'
-  - '--bridge-topics=/waku/2/rs/16/32:/waku/2/default-waku/proto'
 # DNSDiscovery
 go_waku_dns_disc_enabled: true
 go_waku_dns_disc_urls_map:
