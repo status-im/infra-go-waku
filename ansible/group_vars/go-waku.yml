@@ -22,7 +22,8 @@ go_waku_dns_disc_urls_map:
   prod:
     - 'enrtree://AL65EKLJAUXKKPG43HVTML5EFFWEZ7L4LOKTLZCLJASG4DSESQZEC@prod.status.nodes.status.im'
 go_waku_dns_disc_urls: '{{ go_waku_dns_disc_urls_map[stage] }}'
-
+# Shard Cluster
+go_waku_cluster_id: 16
 # Topic configuration
 go_waku_pubsub_topics:
   - '/waku/2/rs/16/32'
