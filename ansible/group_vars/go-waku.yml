@@ -23,6 +23,17 @@ go_waku_dns_disc_urls_map:
     - 'enrtree://AL65EKLJAUXKKPG43HVTML5EFFWEZ7L4LOKTLZCLJASG4DSESQZEC@prod.status.nodes.status.im'
 go_waku_dns_disc_urls: '{{ go_waku_dns_disc_urls_map[stage] }}'
 
+# Topic configuration
+go_waku_pubsub_topics:
+  - '/waku/2/rs/16/32'
+  - '/waku/2/rs/16/64'
+  - '/waku/2/rs/16/128'
+  - '/waku/2/rs/16/256'
+
+go_waku_protected_topics:
+  - '/waku/2/rs/16/128:045ced3b90fabf7673c5165f9cc3a038fd2cfeb96946538089c310b5eaa3a611094b27d8216d9ec8110bd0e0e9fa7a7b5a66e86a27954c9d88ebd41d0ab6cfbb91'
+  - '/waku/2/rs/16/256:049022b33f7583f34463f5b7622e5da29f99f993e6858a478465c68ee114ccf142204eff285ed922349c4b71b178a2e1a2154b99bcc2d8e91b3994626ffa9f1a6c'
+
 # Ports
 go_waku_rpc_port: 8545
 go_waku_libp2p_port: 30303
