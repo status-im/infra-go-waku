@@ -21,15 +21,15 @@
 
 - name: systemd-timer
   src: git@github.com:status-im/infra-role-systemd-timer.git
-  version: 8fe1d6a85fa0f4020938107a39d09a1db51cecfb
+  version: bfd404dd92642e1d310f8ce40df97fcb9e33be98
   scm: git
 
 - name: certbot
   src: git@github.com:status-im/infra-role-certbot.git
-  version: 41e768fe2e9212366c6a33aa8c2e30d0b2832e80
+  version: c7a5afe6a7d76f7c021041ec1e7df4f7e46cf374
   scm: git
 
 - name: go-waku
   src: git@github.com:status-im/infra-role-go-waku.git
-  version: 205815025c4879f85dba7047fe98dc20ea7190d8
+  version: b8589978f27adeb8e9b3a81a7c6ab8bb021d1786
   scm: git
