@@ -1,3 +1,5 @@
+## :warning: This is a legacy repository and no longer used.
+
 # Description
 
 This repo defines infrastructure for running [Waku](https://rfc.vac.dev/spec/10/) nodes implemented in [Go](https://golang.org/).
